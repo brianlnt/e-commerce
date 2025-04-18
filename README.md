@@ -40,6 +40,10 @@ Follow these steps to set up and run the project locally:
    ```sh
    pnpm run start
    ```
+   or
+   ```sh
+   npx serve@latest out
+   ```
 
 5. Open your browser and navigate to `http://localhost:3000`.
 
