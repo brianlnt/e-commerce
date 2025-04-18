@@ -1,7 +1,16 @@
 import { notFound } from "next/navigation"
 import Image from "next/image"
 import { AddToCartButton } from "@/components/add-to-cart-button"
-import { getProductById } from "@/lib/products"
+import { getProductById, getProducts } from "@/lib/products"
+
+export async function generateStaticParams() {
+  // Fetch or define the list of product IDs to pre-render
+  const products = await getProducts();
+
+  return products.map((product) => ({
+    id: product.id.toString(), // Ensure the ID is a string
+  }));
+}
 
 export default async function ProductPage({ params }: { params: { id: string } }) {
   const product = await getProductById(params.id)
